@@ -27,15 +27,14 @@ export default function App() {
     );
     setCity(location[0].city);
     const { list } = await (
-      await fetch(
+    await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
       )
     ).json();
-    console.log(list)
-    // const filteredList = list.filter(({ dt_txt }) =>
-    //   dt_txt.endsWith("00:00:00")
-    // );
-    // setDays(filteredList);
+    const filteredList = list.filter(({ dt_txt }) =>
+      dt_txt.endsWith("00:00:00")
+    );
+    setDays(filteredList);
   };
 
   useEffect(() => {
